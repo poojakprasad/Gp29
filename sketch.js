@@ -9,9 +9,11 @@ var stand1,stand2;
 //var ball;
 var slingShot;
 var polygon,polygon_img;
+
 function preload(){
   polygon_img=loadImage("polygon.png");
 }
+
 function setup() {
   createCanvas(900,400);
   engine = Engine.create();
@@ -46,7 +48,7 @@ function setup() {
   polygon = Bodies.circle(50,200,20);
   World.add(world,polygon);
 
-  slingShot = new Slingshot(this.polygon,{x:10,y:200});
+  slingShot = new Slingshot(this.polygon,{x:100,y:200});
 }
 function draw() {
   background(56,44,44); 
@@ -83,15 +85,15 @@ function draw() {
   fill("grey");
   block16.display();
 
-  polygon.display();
+  //polygon.display();
 
   slingShot.display();
 }
 
 function mouseDragged(){
-  Matter.Body.setPosition(polygon.body,{x:mouseX,y:mouseY})
+  Matter.Body.setPosition(this.polygon,{x:mouseX,y:mouseY})
 }
 
 function mouseReleased(){
-  polygon.fly();
+  slingShot.fly();
 }
